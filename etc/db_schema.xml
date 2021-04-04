@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Eriocnemis, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- shipping rules table -->
+    <table name="eriocnemis_region_shipping_rule" resource="default" engine="innodb" comment="Shipping Rule">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Description"/>
+        <column xsi:type="date" name="from_date" comment="From"/>
+        <column xsi:type="date" name="to_date" comment="To"/>
+        <column xsi:type="smallint" name="methods_access" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Methods Access"/>
+        <column xsi:type="smallint" name="status" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+        </constraint>
+        <index referenceId="ERIOCNEMIS_RGN_SHPP_RULE_STATUS_TO_DATE_FROM_DATE" indexType="btree">
+            <column name="status"/>
+            <column name="to_date"/>
+            <column name="from_date"/>
+        </index>
+    </table>
+    <!-- shipping rules relation table -->
+    <table name="eriocnemis_region_shipping_rule_relation" resource="default" engine="innodb" comment="Shipping Rule To Regions Relations">
+        <column xsi:type="int" name="region_id" padding="10" unsigned="true" nullable="false" comment="Region ID"/>
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Rule ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="region_id"/>
+            <column name="rule_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_RELATION_RGN_ID_DIR_COUNTRY_RGN_RGN_ID"
+            table="eriocnemis_region_shipping_rule_relation"
+            column="region_id"
+            referenceTable="directory_country_region"
+            referenceColumn="region_id"
+            onDelete="CASCADE"/>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_RELATION_RULE_ID_ERIOCNEMIS_RGN_SHPP_RULE_RULE_ID"
+            table="eriocnemis_region_shipping_rule_relation"
+            column="rule_id"
+            referenceTable="eriocnemis_region_shipping_rule"
+            referenceColumn="rule_id"
+            onDelete="CASCADE"/>
+    </table>
+    <!-- customer groups relation table -->
+    <table name="eriocnemis_region_shipping_rule_customer_group" resource="default" engine="innodb" comment="Shipping Rule To Groups Relations">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Rule ID"/>
+        <column xsi:type="int" name="customer_group_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Customer Group ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+            <column name="customer_group_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_CSTR_GROUP_RULE_ID_ERIOCNEMIS_RGN_SHPP_RULE_RULE_ID"
+            table="eriocnemis_region_shipping_rule_customer_group"
+            column="rule_id"
+            referenceTable="eriocnemis_region_shipping_rule"
+            referenceColumn="rule_id"
+            onDelete="CASCADE"/>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_CSTR_GROUP_CSTR_GROUP_ID_CSTR_GROUP_CSTR_GROUP_ID"
+            table="eriocnemis_region_shipping_rule_customer_group"
+            column="customer_group_id"
+            referenceTable="customer_group"
+            referenceColumn="customer_group_id"
+            onDelete="CASCADE"/>
+    </table>
+    <!-- websites relation table -->
+    <table name="eriocnemis_region_shipping_rule_website" resource="default" engine="innodb" comment="Shipping Rule To Websites Relations">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Rule ID"/>
+        <column xsi:type="smallint" name="website_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Website ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+            <column name="website_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_WS_RULE_ID_ERIOCNEMIS_RGN_SHPP_RULE_RULE_ID"
+            table="eriocnemis_region_shipping_rule_website"
+            column="rule_id"
+            referenceTable="eriocnemis_region_shipping_rule"
+            referenceColumn="rule_id"
+            onDelete="CASCADE"/>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_WS_WS_ID_STORE_WS_WS_ID"
+            table="eriocnemis_region_shipping_rule_website"
+            column="website_id"
+            referenceTable="store_website"
+            referenceColumn="website_id"
+            onDelete="CASCADE"/>
+        <index referenceId="ERIOCNEMIS_RGN_SHPP_RULE_WS_WS_ID" indexType="btree">
+            <column name="website_id"/>
+        </index>
+    </table>
+    <!-- shipping methods relation table -->
+    <table name="eriocnemis_region_shipping_rule_method" resource="default" engine="innodb" comment="Shipping Rule To Methods Relations">
+        <column xsi:type="int" name="rule_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Rule ID"/>
+        <column xsi:type="varchar" name="shipping_method" nullable="false" length="120" comment="Shipping Method"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="rule_id"/>
+            <column name="shipping_method"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+            referenceId="ERIOCNEMIS_RGN_SHPP_RULE_METHOD_RULE_ID_ERIOCNEMIS_RGN_SHPP_RULE_RULE_ID"
+            table="eriocnemis_region_shipping_rule_method"
+            column="rule_id"
+            referenceTable="eriocnemis_region_shipping_rule"
+            referenceColumn="rule_id"
+            onDelete="CASCADE"/>
+        <index referenceId="ERIOCNEMIS_RGN_SHPP_RULE_METHOD_SHPP_METHOD" indexType="btree">
+            <column name="shipping_method"/>
+        </index>
+    </table>
+</schema>

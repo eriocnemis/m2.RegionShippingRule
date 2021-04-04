@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Eriocnemis, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="eriocnemis_region_load_after">
+        <observer name="eriocnemis_region_shipping_rule" instance="Eriocnemis\RegionShippingRule\Observer\LoadRuleObserver"/>
+    </event>
+    <event name="eriocnemis_region_save_after">
+        <observer name="eriocnemis_region_shipping_rule" instance="Eriocnemis\RegionShippingRule\Observer\SaveRuleObserver"/>
+    </event>
+    <event name="eriocnemis_region_shipping_rule_collection_load_after">
+        <observer name="eriocnemis_region_shipping_rule" instance="Eriocnemis\RegionShippingRule\Observer\LoadRulesObserver"/>
+    </event>
+    <event name="eriocnemis_region_shipping_rule_load_after">
+        <observer name="eriocnemis_region_shipping_rule_website" instance="Eriocnemis\RegionShippingRule\Observer\LoadWebsiteObserver"/>
+        <observer name="eriocnemis_region_shipping_rule_customer_group" instance="Eriocnemis\RegionShippingRule\Observer\LoadCustomerGroupObserver"/>
+        <observer name="eriocnemis_region_shipping_rule_method" instance="Eriocnemis\RegionShippingRule\Observer\LoadMethodObserver"/>
+    </event>
+    <event name="eriocnemis_region_shipping_rule_save_after">
+        <observer name="eriocnemis_region_shipping_rule_website" instance="Eriocnemis\RegionShippingRule\Observer\SaveWebsiteObserver"/>
+        <observer name="eriocnemis_region_shipping_rule_customer_group" instance="Eriocnemis\RegionShippingRule\Observer\SaveCustomerGroupObserver"/>
+        <observer name="eriocnemis_region_shipping_rule_method" instance="Eriocnemis\RegionShippingRule\Observer\SaveMethodObserver"/>
+    </event>
+</config>

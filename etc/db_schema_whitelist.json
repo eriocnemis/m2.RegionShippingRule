@@ -1,0 +1,68 @@
+{
+    "eriocnemis_region_shipping_rule": {
+        "column": {
+            "rule_id": true,
+            "name": true,
+            "description": true,
+            "from_date": true,
+            "to_date": true,
+            "methods_access": true,
+            "status": true
+        },
+        "index": {
+            "ERIOCNEMIS_REGION_SHIPPING_RULE_STATUS_TO_DATE_FROM_DATE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "eriocnemis_region_shipping_rule_relation": {
+        "column": {
+            "region_id": true,
+            "rule_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_8A430E109B9D872C0F734063E9C8C400": true,
+            "FK_B8F943F7700705493351FE9C2F2F7F1B": true
+        }
+    },
+    "eriocnemis_region_shipping_rule_customer_group": {
+        "column": {
+            "rule_id": true,
+            "customer_group_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_2AAB7798902CA4EC91BFACA217F6C3AF": true,
+            "FK_57AB734E546631A47F9729780C5C47CD": true
+        }
+    },
+    "eriocnemis_region_shipping_rule_website": {
+        "column": {
+            "rule_id": true,
+            "website_id": true
+        },
+        "index": {
+            "ERIOCNEMIS_REGION_SHIPPING_RULE_WEBSITE_WEBSITE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_916B4BBD3538224FD6C62459C1090536": true,
+            "ERIOCNEMIS_REGION_SHPP_RULE_WS_WS_ID_STORE_WS_WS_ID": true
+        }
+    },
+    "eriocnemis_region_shipping_rule_method": {
+        "column": {
+            "rule_id": true,
+            "shipping_method": true
+        },
+        "index": {
+            "ERIOCNEMIS_REGION_SHIPPING_RULE_METHOD_SHIPPING_METHOD": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_D0DA1BCFB3B9FE1CD536A673B7433656": true
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Eriocnemis, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- web api preference -->
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\Data\RuleInterface" type="Eriocnemis\RegionShippingRule\Model\Data\Rule"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\Data\RuleSearchResultInterface" type="Eriocnemis\RegionShippingRule\Model\Data\RuleSearchResult"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\GetRuleByIdInterface" type="Eriocnemis\RegionShippingRule\Model\GetRuleById"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\GetRuleListInterface" type="Eriocnemis\RegionShippingRule\Model\GetRuleList"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\DeleteRuleByIdInterface" type="Eriocnemis\RegionShippingRule\Model\DeleteRuleById"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\SaveRuleInterface" type="Eriocnemis\RegionShippingRule\Model\SaveRule"/>
+    <preference for="Eriocnemis\RegionShippingRuleApi\Api\ValidateRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ValidateRule"/>
+    <!-- preference -->
+    <preference for="Eriocnemis\RegionShippingRule\Api\ConvertRuleToDataInterface" type="Eriocnemis\RegionShippingRule\Model\ConvertRuleToData"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\ConvertDataToRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ConvertDataToRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetRuleIdsByRegionIdInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetRuleIdsByRegionId"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetWebsiteIdsByRuleIdInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetWebsiteIdsByRuleId"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetWebsiteIdsByRuleIdsInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetWebsiteIdsByRuleIds"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetCustomerGroupIdsByRuleIdInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetCustomerGroupIdsByRuleId"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetCustomerGroupIdsByRuleIdsInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetCustomerGroupIdsByRuleIds"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetMethodsByRuleIdInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetMethodsByRuleId"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetMethodsByRuleIdsInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\GetMethodsByRuleIds"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\DetachRuleFromRegionInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\DetachRuleFromRegion"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\AttachRuleToRegionInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\AttachRuleToRegion"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\DetachWebsiteFromRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\DetachWebsiteFromRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\AttachWebsiteToRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\AttachWebsiteToRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\DetachMethodFromRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\DetachMethodFromRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\AttachMethodToRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\AttachMethodToRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\DetachCustomerGroupFromRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\DetachCustomerGroupFromRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\AttachCustomerGroupToRuleInterface" type="Eriocnemis\RegionShippingRule\Model\ResourceModel\AttachCustomerGroupToRule"/>
+    <preference for="Eriocnemis\RegionShippingRule\Api\GetActiveRuleListInterface" type="Eriocnemis\RegionShippingRule\Model\GetActiveRuleList"/>
+    <preference for="Eriocnemis\RegionShippingRule\Model\Rule\ValidatorInterface" type="Eriocnemis\RegionShippingRule\Model\Rule\Validator"/>
+    <preference for="Eriocnemis\RegionShippingRule\Model\Quote\QuoteContextInterface" type="Eriocnemis\RegionShippingRule\Model\Quote\CheckoutQuoteContext"/>
+    <!-- validator configuration -->
+    <type name="Eriocnemis\RegionShippingRule\Model\Rule\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="name" xsi:type="object">Eriocnemis\RegionShippingRule\Model\Rule\Validator\NameValidator</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Eriocnemis\RegionShippingRule\Model\Rate\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="website" xsi:type="object">Eriocnemis\RegionShippingRule\Model\Rate\Validator\WebsiteValidator</item>
+                <item name="customer_group" xsi:type="object">Eriocnemis\RegionShippingRule\Model\Rate\Validator\CustomerGroupValidator</item>
+                <item name="methods" xsi:type="object">Eriocnemis\RegionShippingRule\Model\Rate\Validator\MethodValidator</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- plugin -->
+    <type name="Magento\Quote\Model\Quote\Address\RateCollectorInterface">
+        <plugin name="eriocnemis_region_shipping_rule" type="Eriocnemis\RegionShippingRule\Plugin\Quote\Model\Quote\Address\RateCollectorPlugin"/>
+    </type>
+    <type name="Magento\Shipping\Model\Rate\Result">
+        <plugin name="eriocnemis_region_shipping_rule" type="Eriocnemis\RegionShippingRule\Plugin\Shipping\Model\Rate\ResultPlugin"/>
+    </type>
+</config>

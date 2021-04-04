@@ -1,0 +1,4 @@
+"Rule name field is required. Enter and try again.","Rule name field is required. Enter and try again."
+"Rule with id "%1" does not exist.","Rule with id "%1" does not exist."
+"Could not delete the rule with id: %1","Could not delete the rule with id: %1"
+"Could not save the rule with id: %1","Could not save the rule with id: %1"
