@@ -72,7 +72,7 @@ class LoadRulesObserver implements ObserverInterface
             foreach ($collection as $rule) {
                 $rule->setData(RuleInterface::WEBSITE_IDS, $websiteIds[$rule->getId()] ?? []);
                 $rule->setData(RuleInterface::CUSTOMER_GROUP_IDS, $customerGroupIds[$rule->getId()] ?? []);
-                $rule->setData(RuleInterface::SHIPPING_METHODS, $methods[$rule->getId()] ?? []);
+                $rule->setData(RuleInterface::PAYMENT_METHODS, $methods[$rule->getId()] ?? []);
             }
         }
     }

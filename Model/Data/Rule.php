@@ -78,7 +78,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     }
 
     /**
-     * Retrieve the start date when the coupon is active
+     * Retrieve the start date when the rule is active
      *
      * @return string|null
      */
@@ -88,7 +88,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     }
 
     /**
-     * Set the star date when the coupon is active
+     * Set the star date when the rule is active
      *
      * @param string $fromDate
      * @return $this
@@ -99,7 +99,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     }
 
     /**
-     * Retrieve the end date when the coupon is active
+     * Retrieve the end date when the rule is active
      *
      * @return string|null
      */
@@ -109,7 +109,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     }
 
     /**
-     * Set the end date when the coupon is active
+     * Set the end date when the rule is active
      *
      * @param string $toDate
      * @return $this
@@ -227,7 +227,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     /**
      * Retrieve existing extension attributes object or create a new one
      *
-     * @return \Eriocnemis\RegionShippingRule\Api\Data\RuleExtensionInterface
+     * @return \Eriocnemis\RegionShippingRuleApi\Api\Data\RuleExtensionInterface
      */
     public function getExtensionAttributes()
     {
@@ -237,7 +237,7 @@ class Rule extends AbstractExtensibleObject implements RuleInterface
     /**
      * Set an extension attributes object
      *
-     * @param \Eriocnemis\RegionShippingRule\Api\Data\RuleExtensionInterface $extensionAttributes
+     * @param \Eriocnemis\RegionShippingRuleApi\Api\Data\RuleExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(RuleExtensionInterface $extensionAttributes)
