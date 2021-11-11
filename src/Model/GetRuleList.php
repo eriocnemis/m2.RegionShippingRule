@@ -34,7 +34,7 @@ class GetRuleList implements GetRuleListInterface
     private $collectionFactory;
 
     /**
-     * @var SearchResultInterfaceFactory
+     * @var RuleSearchResultInterfaceFactory
      */
     private $searchResultsFactory;
 
