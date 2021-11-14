@@ -34,7 +34,7 @@ class GetRuleList implements GetRuleListInterface
     private $collectionFactory;
 
     /**
-     * @var SearchResultInterfaceFactory
+     * @var RuleSearchResultInterfaceFactory
      */
     private $searchResultsFactory;
 
@@ -82,9 +82,8 @@ class GetRuleList implements GetRuleListInterface
         $collection = $this->collectionFactory->create();
         if (null === $searchCriteria) {
             $searchCriteria = $this->searchCriteriaBuilder->create();
-        } else {
-            $this->collectionProcessor->process($searchCriteria, $collection);
         }
+        $this->collectionProcessor->process($searchCriteria, $collection);
 
         $items = [];
         /** @var \Magento\Framework\Model\AbstractModel $model */

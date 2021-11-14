@@ -2,31 +2,34 @@
     "name": "eriocnemis/module-region-shipping-rule",
     "description": "The module allows you to create flexible rules for managing shipping methods depending on the region.",
     "type": "magento2-module",
-    "version": "2.3.1",
-    "authors": [{
-        "name": "Eriocnemis Team",
-        "email": "dev.eriocnemis@gmail.com"
-    }],
+    "version": "2.3.2",
+    "authors": [
+        {
+            "name": "Eriocnemis Team",
+            "email": "dev.eriocnemis@gmail.com"
+        }
+    ],
     "license": [
         "OSL-3.0"
     ],
     "require": {
+        "php": "~7.1.3||~7.2.0||~7.3.0",
         "magento/framework": "102.0.*",
         "magento/module-backend": "101.0.*",
         "magento/module-checkout": "100.3.*",
         "magento/module-quote": "101.1.*",
         "magento/module-shipping": "100.3.*",
-        "eriocnemis/module-region": "2.3.*",
-        "eriocnemis/module-region-api": "2.3.*",
-        "eriocnemis/module-region-admin-ui": "2.3.*",
-        "eriocnemis/module-region-shipping-rule-api": "2.3.*"
+        "eriocnemis/module-region": "2.3.2",
+        "eriocnemis/module-region-api": "2.3.2",
+        "eriocnemis/module-region-admin-ui": "2.3.2",
+        "eriocnemis/module-region-shipping-rule-api": "2.3.2"
     },
     "autoload": {
         "files": [
-            "registration.php"
+            "src/registration.php"
         ],
         "psr-4": {
-            "Eriocnemis\\RegionShippingRule\\": ""
+            "Eriocnemis\\RegionShippingRule\\": "src"
         }
     }
 }

@@ -1,0 +1,8 @@
+parameters:
+    checkExplicitMixedMissingReturn: true
+    checkPhpDocMissingReturn: true
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        - '#Method (?:.*?) should return (?:.*?)ExtensionInterface but returns Magento\\Framework\\Api\\ExtensionAttributesInterface.#'
+        - '#Method (?:.*?) should return Magento\\Framework\\Api\\Search\\FilterGroup but returns Magento\\Framework\\Api\\AbstractSimpleObject.#'
+        - '#Cannot call method getShippingRuleIds\(\) on Eriocnemis\\RegionApi\\Api\\Data\\RegionExtensionInterface\|null.#'
